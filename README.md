@@ -32,7 +32,9 @@ terraform init
    ```bash
    terraform apply
    ```
-3. After a successful import, **remove the import block** from your configuration. Keep the resource block to manage the resource going forward.
+3. After a successful import, **remove the import block** from your configuration.
+4. **If you used `terraform plan --generate-config-out=demo.tf`, move the generated resource block from `demo.tf` to `main.tf` to keep your configuration organized.**
+5. Keep the resource block in `main.tf` to manage the resource going forward.
 
 #### **Old Method: Using the CLI Command**
 1. Your `main.tf` should contain only the resource block (no import block):
@@ -57,6 +59,7 @@ terraform apply
 ## Notes
 - The import block is only needed for the import operation. Remove it after import.
 - The resource block must always be present and should match the actual configuration of your imported resource.
+- If you used `terraform plan --generate-config-out=demo.tf`, move the generated resource block to `main.tf` after review.
 - Review the state file after import to confirm resources are tracked correctly.
 
 ## References
